@@ -1,0 +1,81 @@
+{
+    "etudiant": {
+      "nom": "Corentin FRIEDMANN",
+      "email": "corentinfriedmanndu67@gmail.com",
+      "telephone": "+33 7 80 35 41 95",
+      "photo": "photo-profil.jpg",
+      "resume": "Étudiant passionné par l'informatique à la rechercher de nouvelle opportunités"
+    },
+    "reseaux": [
+      {
+        "nom": "LinkedIn",
+        "icone": "fab fa-linkedin",
+        "lien": "https://linkedin.com/in/votreprofil"
+      },
+      {
+        "nom": "GitHub",
+        "icone": "fab fa-github",
+        "lien": "https://github.com/votreprofil"
+      },
+      {
+        "nom": "Twitter",
+        "icone": "fab fa-twitter",
+        "lien": "https://twitter.com/votreprofil"
+      }
+    ],
+    "formations": [
+      {
+        "debut": "2023",
+        "fin": "Présent",
+        "diplome": "Nom du Diplôme",
+        "etablissement": "Nom de l'Établissement",
+        "description": "Description détaillée de votre formation actuelle avec les spécialisations et points forts.",
+        "competences": ["Compétence 1", "Compétence 2", "Compétence 3"],
+        "couleur": "#3498db"
+      },
+      {
+        "debut": "2021",
+        "fin": "2023",
+        "diplome": "Diplôme Précédent",
+        "etablissement": "Établissement Précédent",
+        "description": "Description de votre formation précédente.",
+        "competences": ["Compétence A", "Compétence B"],
+        "couleur": "#e74c3c"
+      }
+    ],
+    "competences": {
+      "categories": [
+        {
+          "nom": "Techniques",
+          "icone": "fas fa-laptop-code",
+          "items": ["HTML/CSS", "JavaScript", "Python", "Analyse de données"]
+        },
+        {
+          "nom": "Langues",
+          "icone": "fas fa-language",
+          "items": ["Anglais (C1)", "Espagnol (B2)", "Allemand (A2)"]
+        },
+        {
+          "nom": "Soft Skills",
+          "icone": "fas fa-users",
+          "items": ["Travail d'équipe", "Gestion de projet", "Présentation"]
+        }
+      ]
+    },
+    "projets": [
+      {
+        "titre": "Projet Académique 1",
+        "description": "Description détaillée du projet et des compétences mobilisées.",
+        "image": "projet1.jpg",
+        "tags": ["Tag1", "Tag2"],
+        "lien": "#"
+      },
+      {
+        "titre": "Projet Innovant",
+        "description": "Description détaillée du projet innovant réalisé en groupe.",
+        "image": "projet2.jpg",
+        "tags": ["Tag3", "Tag4"],
+        "lien": "#"
+      }
+    ]
+  }
