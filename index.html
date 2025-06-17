@@ -28,7 +28,7 @@
   </nav>
 
   <!-- ACCUEIL -->
-  <section class="tilt-section hero-section" id="accueil">
+  <section class="hero-section" id="accueil">
     <div class="hero-profile">
       <img src="photo-profil.jpg" alt="Corentin FRIEDMANN" class="profile-photo">
       <h2>Corentin FRIEDMANN</h2>
@@ -53,7 +53,7 @@
   </section>
 
   <!-- FILTRES DOMAINE -->
-  <section class="tilt-section container" id="domaine-filtres">
+  <section class=" container" id="domaine-filtres">
     <h2>Filtrer par domaine</h2>
     <div class="domain-filters">
       <button onclick="filterDomain('all')" class="active">Tous</button>
@@ -64,25 +64,25 @@
   </section>
 
   <!-- CLOUD AC -->
-  <section class="tilt-section container" id="ac-cloud-section">
+  <section class=" container" id="ac-cloud-section">
     <h2>Visualiser par compétences (AC)</h2>
     <div id="ac-cloud" style="margin:20px 0 34px 0; display: flex; flex-wrap: wrap; gap: 9px;"></div>
   </section>
 
   <!-- PROJETS / SAE -->
-  <section class="tilt-section container" id="projets">
+  <section class=" container" id="projets">
     <h2>Mes Projets & SAÉ</h2>
     <div id="projets-list"></div>
   </section>
 
   <!-- PROGRESSION -->
-  <section class="tilt-section container" id="stats-section">
+  <section class=" container" id="stats-section">
     <h2>📈 Progression SAE par domaine</h2>
     <div id="chart"></div>
   </section>
 
   <!-- GRILLE COMPÉTENCES -->
-  <section class="tilt-section container" id="grille">
+  <section class=" container" id="grille">
     <h2>Grille de compétences : correspondance AC × SAE</h2>
     <div id="grille-table"></div>
     <button id="export-pdf" class="btn">Exporter PDF</button>
@@ -107,16 +107,7 @@
     document.addEventListener("mouseleave", () => {
       document.body.style.transform = "none";
     });
-    // Effet tilt au scroll sur .tilt-section
-    function scrollTilt() {
-      document.querySelectorAll('.tilt-section').forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        const pos = (rect.top + rect.height/2) - window.innerHeight/2;
-        const max = window.innerHeight/2;
-        const angle = (pos/max)*5;
-        sec.style.transform = `perspective(700px) rotateX(${angle}deg)`;
-      });
-    }
+      }
     window.addEventListener('scroll', scrollTilt);
     scrollTilt();
   </script>

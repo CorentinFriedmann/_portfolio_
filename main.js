@@ -1,14 +1,6 @@
 // ------------------------------
 // EFFET 3D GLOBAL SUR BODY (mouvement souris)
 // ------------------------------
-document.addEventListener("mousemove", e => {
-  const dx = (window.innerWidth / 2 - e.clientX) * 0.003;
-  const dy = (window.innerHeight / 2 - e.clientY) * 0.003;
-  document.body.style.transform = `rotateY(${dx}deg) rotateX(${dy}deg) scale(1.005)`;
-});
-document.addEventListener("mouseleave", () => {
-  document.body.style.transform = "none";
-});
 
 // ------------------------------
 // DONNEES AC ET PROJETS
@@ -269,17 +261,7 @@ window.addEventListener('load', () => {
 });
 
 // Tilt effet sur chaque section .tilt-section
-function scrollTilt() {
-  document.querySelectorAll('.tilt-section').forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    const pos = (rect.top + rect.height/2) - window.innerHeight/2;
-    const max = window.innerHeight/2;
-    const angle = (pos/max)*5;
-    sec.style.transform = `perspective(500px) rotateX(${angle}deg)`;
-  });
-}
-window.addEventListener('scroll', scrollTilt);
-scrollTilt();
+
 
 // ------------------------------
 // INITIALISATION TOUT AFFICHER
