@@ -1,90 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio BUT R&T – Corentin FRIEDMANN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Styles personnalisés -->
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Portfolio BUT R&T – Corentin FRIEDMANN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,400&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <!-- Fond animé gadget -->
-    <div id="webgl-container"></div>
+  <!-- Fond animé gadget -->
+  <div id="webgl-container"></div>
+  <!-- Navigation principale -->
+  <nav class="gadget-nav">
+    <ul>
+      <li><a href="#accueil" class="active"><i class="fa fa-home"></i> Accueil</a></li>
+      <li><a href="#projets"><i class="fa fa-folder-open"></i> Projets & SAE</a></li>
+      <li><a href="#grille"><i class="fa fa-table"></i> Grille de compétences</a></li>
+      <li><button class="theme-switch" onclick="toggleTheme()" title="Basculer thème"><i class="fa fa-moon"></i></button></li>
+    </ul>
+  </nav>
+  <!-- Section Accueil -->
+  <section class="hero-section" id="accueil">
+    <div class="hero-profile">
+      <img src="photo-profil.jpg" alt="Corentin FRIEDMANN" class="profile-photo">
+      <h2>Corentin FRIEDMANN</h2>
+      <div class="hero-desc">
+        Bienvenue sur mon e-portfolio interactif : <b>projets, compétences, preuves & gadgets !</b>
+      </div>
+      <div class="social-links">
+        <a class="social-btn" href="mailto:tonmail@uha.fr"><i class="fa fa-envelope"></i></a>
+        <a class="social-btn" href="https://linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a class="social-btn" href="https://github.com/Tintinlebgdu67" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Navigation principale -->
-    <nav class="gadget-nav">
-        <ul>
-            <li><a href="#accueil" class="active"><i class="fa fa-home"></i> Accueil</a></li>
-            <li><a href="#projets"><i class="fa fa-folder-open"></i> Projets & SAE</a></li>
-            <li><a href="#grille"><i class="fa fa-table"></i> Grille de compétences</a></li>
-            <li><button class="theme-switch" onclick="toggleTheme()" title="Basculer thème"><i class="fa fa-moon"></i></button></li>
-        </ul>
-    </nav>
+  <!-- Filtres par domaine -->
+  <section class="container" id="domaine-filtres">
+    <h2>Filtrer par domaine</h2>
+    <div class="domain-filters">
+      <button onclick="filterDomain('all')" class="active">Tous</button>
+      <button onclick="filterDomain('admin')">Administrer</button>
+      <button onclick="filterDomain('connect')">Connecter</button>
+      <button onclick="filterDomain('prog')">Programmer</button>
+    </div>
+  </section>
 
-    <!-- Section Accueil -->
-    <section class="hero-section" id="accueil">
-        <div class="hero-profile">
-            <img src="coco_photo.png" alt="Corentin FRIEDMANN" class="profile-photo">
-            <h2>Corentin FRIEDMANN</h2>
-            <div class="hero-desc">
-                Bienvenue sur mon e-portfolio interactif : <b>projets, compétences, preuves & gadgets !</b>
-            </div>
-            <div class="social-links">
-                <a class="social-btn" href="mailto:corentin.friedmann@uha.fr"><i class="fa fa-envelope"></i></a>
-                <a class="social-btn" href="https://www.linkedin.com/in/corentin-friedmann-a44b9633b/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a class="social-btn" href="https://github.com/CorentinFriedmann" target="_blank"><i class="fa-brands fa-github"></i></a>
-            </div>
-        </div>
-    </section>
+  <!-- Cloud AC -->
+  <section class="container" id="ac-cloud-section">
+    <h2>Visualiser par compétences (AC)</h2>
+    <div id="ac-cloud" style="margin:20px 0 34px 0; display: flex; flex-wrap: wrap; gap: 9px;"></div>
+  </section>
 
-    <!-- Présentation rapide -->
-    <section class="section-infos container">
-        <div class="infos-bloc">
-            <div class="infos-txt">
-                <h3>Qui suis-je ?</h3>
-                <p>Étudiant BUT Réseaux & Télécoms, passionné par les technologies, les réseaux, l’IT et la cybersécurité.<br>
-                Motivé pour devenir un acteur clé du numérique et des télécoms de demain !</p>
-                <p>
-                    <b>Mail :</b> corentin.friedmann@uha.fr<br>
-                    <b>Tél :</b> 07 80 35 41 95
-                </p>
-            </div>
-            <div class="infos-formations">
-                <span class="formation-badge">BUT Réseaux & Télécommunications</span>
-                <div class="formation-desc">Université de Haute-Alsace<br>Parcours S1 & S2</div>
-            </div>
-        </div>
-    </section>
+  <!-- Projets & SAE -->
+  <section class="container" id="projets">
+    <h2>Mes Projets & SAÉ</h2>
+    <div id="projets-list"></div>
+  </section>
 
-    <!-- Cloud AC -->
-    <section class="container" id="ac-cloud-section">
-        <h2>Visualiser par compétences (AC)</h2>
-        <div id="ac-cloud" style="margin:20px 0 34px 0; display: flex; flex-wrap: wrap; gap: 9px;"></div>
-    </section>
+  <!-- Graphique progression -->
+  <section class="container" id="stats-section">
+    <h2>📈 Progression SAE par domaine</h2>
+    <div id="chart"></div>
+  </section>
 
-    <!-- PROJETS & SAE -->
-    <section class="container" id="projets">
-        <h2>Mes Projets & SAÉ</h2>
-        <div id="projets-list"></div>
-    </section>
+  <!-- Grille AC x SAE -->
+  <section class="container" id="grille">
+    <h2>Grille de compétences : correspondance AC × SAE</h2>
+    <div id="grille-table"></div>
+    <button id="export-pdf" class="btn"><i class="fa fa-file-pdf"></i> Exporter PDF</button>
+  </section>
 
-    <!-- GRILLE COMPÉTENCES AC × SAE -->
-    <section class="container" id="grille">
-        <h2>Grille de compétences : correspondance AC × SAE</h2>
-        <div id="grille-table"></div>
-        <button id="export-pdf" class="btn"><i class="fa fa-file-pdf"></i> Exporter PDF</button>
-    </section>
+  <footer>
+    © 2025 Portfolio BUT Réseaux & Télécoms – Corentin FRIEDMANN
+  </footer>
 
-    <!-- Footer -->
-    <footer>
-        © 2025 Portfolio BUT Réseaux & Télécoms – Corentin FRIEDMANN
-    </footer>
-
-    <!-- JS principal -->
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
