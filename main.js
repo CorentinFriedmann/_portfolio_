@@ -1,5 +1,6 @@
-// --- AC par doma
-// ine
+// ------------------------------
+// EFFET 3D GLOBAL SUR BODY (mouvement souris)
+// ------------------------------
 document.addEventListener("mousemove", e => {
   const dx = (window.innerWidth / 2 - e.clientX) * 0.003;
   const dy = (window.innerHeight / 2 - e.clientY) * 0.003;
@@ -9,6 +10,9 @@ document.addEventListener("mouseleave", () => {
   document.body.style.transform = "none";
 });
 
+// ------------------------------
+// DONNEES AC ET PROJETS
+// ------------------------------
 const acDomain = {
   admin: ["AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06"],
   connect: ["AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05"],
@@ -94,6 +98,9 @@ const projets = [
   }
 ];
 
+// ------------------------------
+// RENDERING DES BADGES AC
+// ------------------------------
 function badgeAC(ac) {
   const dom = Object.keys(acDomain).find(d => acDomain[d].includes(ac));
   return `<span class="ac-badge ${dom}" title="${acDescriptions[ac] || ac}" onclick="filterByAC('${ac}')">${ac}</span>`;
@@ -103,14 +110,21 @@ function renderACCloud(list = allACs) {
   document.getElementById('ac-cloud').innerHTML = list.map(ac => badgeAC(ac)).join('');
 }
 
+// ------------------------------
+// FILTRES DOMAINE
+// ------------------------------
 function filterDomain(domain) {
   document.querySelectorAll('.domain-filters button').forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
   let list = (domain === 'all') ? allACs : acDomain[domain];
   renderACCloud(list);
-  renderProjets(); renderGrille();
+  renderProjets();
+  renderGrille();
 }
 
+// ------------------------------
+// AFFICHAGE PROJETS / SAE
+// ------------------------------
 function renderProjets(filteredAC = null) {
   const projDiv = document.getElementById('projets-list');
   let filtered = projets;
@@ -129,17 +143,20 @@ function renderProjets(filteredAC = null) {
           <span><b>Outils :</b> ${p.outils}</span>
           <span><b>Difficultés :</b> ${p.difficulte}</span>
         </div>
-        <div class="projet-reflexion"><i class="fa fa-lightbulb"></i> ${p.reflexion}</div>
+        <div class="projet-reflexion">${p.reflexion}</div>
         ${p.images.length ? `<div class="projet-multimedia">${p.images.map(img => `<img src="${img}" alt="">`).join('')}</div>` : ''}
         <div class="projet-tags">${p.ac.map(a => badgeAC(a)).join('')}</div>
         <a href="${p.github}" target="_blank" class="btn" style="margin-top:14px;">
-          <i class="fa-brands fa-github"></i> Preuve GitHub
+          Preuve GitHub
         </a>
       </div>
     </div>
   `).join('');
 }
 
+// ------------------------------
+// GRILLE AC x PROJETS
+// ------------------------------
 function renderGrille() {
   let html = `<table class="grille-ac-sae"><thead><tr><th>AC \\ SAE</th>`;
   projets.forEach(p => html += `<th>${p.titre}</th>`);
@@ -158,7 +175,9 @@ function renderGrille() {
   document.getElementById('grille-table').innerHTML = html;
 }
 
-// Mini graphique D3
+// ------------------------------
+// MINI GRAPHIQUE D3 : PROGRESSION SAE
+// ------------------------------
 function renderChart() {
   document.getElementById('chart').innerHTML = "";
   const data = [
@@ -190,7 +209,9 @@ function renderChart() {
     .attr("font-size", 16);
 }
 
-// Fond animé simple
+// ------------------------------
+// FOND ANIME PARTICULES
+// ------------------------------
 (function particlesBG() {
   const canvas = document.createElement('canvas');
   canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -225,6 +246,9 @@ function renderChart() {
   });
 })();
 
+// ------------------------------
+// INTERACTIONS ET INITIALISATION
+// ------------------------------
 function filterByAC(ac) {
   renderProjets(ac);
   window.scrollTo({top: document.getElementById('projets').offsetTop - 40, behavior: 'smooth'});
@@ -238,15 +262,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('export-pdf').onclick = () => { window.print(); };
 });
 
-window.onload = function () {
-  renderACCloud();
-  renderProjets();
-  renderGrille();
-  renderChart();
-};
+// Loader page (masque le spinner après chargement)
 window.addEventListener('load', () => {
-  document.getElementById('page-loader').style.display = 'none';
+  const loader = document.getElementById('page-loader');
+  if (loader) loader.style.display = 'none';
 });
+
+// Tilt effet sur chaque section .tilt-section
 function scrollTilt() {
   document.querySelectorAll('.tilt-section').forEach(sec => {
     const rect = sec.getBoundingClientRect();
@@ -258,3 +280,13 @@ function scrollTilt() {
 }
 window.addEventListener('scroll', scrollTilt);
 scrollTilt();
+
+// ------------------------------
+// INITIALISATION TOUT AFFICHER
+// ------------------------------
+window.onload = function () {
+  renderACCloud();
+  renderProjets();
+  renderGrille();
+  renderChart();
+};
