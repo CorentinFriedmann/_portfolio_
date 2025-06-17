@@ -303,3 +303,50 @@ body.dark-theme .hero-profile, body.dark-theme .container, body.dark-theme .proj
 }
 body.dark-theme .ac-badge { background: #283147; border-color: #4ed4a7; color: #89f7c6;}
 body.dark-theme .btn { background: #45B880;}
+.apropos {
+  background: #f8fcff;
+  border-radius: 18px;
+  margin: 25px auto 0 auto;
+  max-width: 550px;
+  padding: 22px 24px 17px 24px;
+  box-shadow: 0 3px 18px #d1f0ff26;
+  font-size: 1.11em;
+  color: #243147;
+  text-align: left;
+  animation: fadeInDown .7s;
+}
+.apropos h3 {
+  color: var(--primary);
+  font-size: 1.24em;
+  margin-top: 0;
+  margin-bottom: 7px;
+  letter-spacing: 0.01em;
+}
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-36px);}
+  100% { opacity: 1; transform: none;}
+}
+body {
+  transition: transform .2s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+#page-loader {
+  position: fixed; inset: 0;
+  background: #fff;
+  display:flex; align-items:center; justify-content:center;
+  z-index: 9999;
+}
+.spinner {
+  width:50px; height:50px;
+  border:6px solid var(--gray2);
+  border-top:6px solid var(--primary);
+  border-radius:50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.tilt-section {
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(0);
+  transition: transform .5s ease-out;
+}

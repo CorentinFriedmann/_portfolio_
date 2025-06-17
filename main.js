@@ -1,4 +1,14 @@
-// --- AC par domaine
+// --- AC par doma
+// ine
+document.addEventListener("mousemove", e => {
+  const dx = (window.innerWidth / 2 - e.clientX) * 0.003;
+  const dy = (window.innerHeight / 2 - e.clientY) * 0.003;
+  document.body.style.transform = `rotateY(${dx}deg) rotateX(${dy}deg) scale(1.005)`;
+});
+document.addEventListener("mouseleave", () => {
+  document.body.style.transform = "none";
+});
+
 const acDomain = {
   admin: ["AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06"],
   connect: ["AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05"],
@@ -234,3 +244,17 @@ window.onload = function () {
   renderGrille();
   renderChart();
 };
+window.addEventListener('load', () => {
+  document.getElementById('page-loader').style.display = 'none';
+});
+function scrollTilt() {
+  document.querySelectorAll('.tilt-section').forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    const pos = (rect.top + rect.height/2) - window.innerHeight/2;
+    const max = window.innerHeight/2;
+    const angle = (pos/max)*5;
+    sec.style.transform = `perspective(500px) rotateX(${angle}deg)`;
+  });
+}
+window.addEventListener('scroll', scrollTilt);
+scrollTilt();
