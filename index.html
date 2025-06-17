@@ -1,139 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio BUT Réseaux et Télécommunications - Corentin FRIEDMANN</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>Portfolio BUT R&T – Corentin FRIEDMANN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Portfolio BUT R&T</h1>
-      <p>Corentin FRIEDMANN - Année 2024/2025</p>
-    </div>
-  </header>
+    <!-- Fond animé gadget -->
+    <div id="webgl-container"></div>
 
-  <nav>
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#sae">SAÉ</a></li>
-      <li><a href="#documents">Documents</a></li>
-      <li><a href="#grille">Grille de compétences</a></li>
-    </ul>
-  </nav>
+    <!-- Navigation principale -->
+    <nav class="gadget-nav">
+        <ul>
+            <li><a href="#accueil" class="active"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="#projets"><i class="fa fa-folder-open"></i> Projets & SAE</a></li>
+            <li><a href="#grille"><i class="fa fa-table"></i> Grille de compétences</a></li>
+            <li><button class="theme-switch" onclick="toggleTheme()" title="Basculer thème"><i class="fa fa-moon"></i></button></li>
+        </ul>
+    </nav>
 
-  <div class="container" id="accueil">
-    <h2>Bienvenue sur mon portfolio</h2>
-    <p>Ce portfolio présente mes compétences acquises en BUT Réseaux & Télécommunications, mes projets et les preuves associées.</p>
-  </div>
-
-  <div class="container" id="competences">
-    <h2>Compétences du BUT R&T</h2>
-    <div id="competences-container"></div>
-  </div>
-
-  <div class="container" id="sae">
-    <h2>SAÉ réalisées</h2>
-
-    <div class="competence-card">
-      <h3 class="competence-title"><i class="fas fa-network-wired"></i> SAE1.02 - Initiation aux réseaux</h3>
-      <p>Travaux pratiques de configuration de routeurs, commutateurs, et mise en place de services réseau.</p>
-      <a href="#" class="document-link">Voir le rapport</a>
-    </div>
-
-    <div class="competence-card">
-      <h3 class="competence-title"><i class="fas fa-user-shield"></i> SAE1.01 - Hygiène et cybersécurité</h3>
-      <p>Réalisation de supports de sensibilisation à la sécurité informatique avec mise en pratique.</p>
-      <a href="#" class="document-link">Voir le support</a>
-    </div>
-  </div>
-
-  <div class="container" id="documents">
-    <h2>Documents officiels</h2>
-
-    <div class="competence-card">
-      <h3 class="competence-title"><i class="fas fa-file-alt"></i> Relevés et attestations</h3>
-
-      <div class="preuve">
-        <div class="preuve-icon"><i class="fas fa-file-pdf"></i></div>
-        <div>
-          <p>Relevé de notes semestre 1</p>
-          <a href="#" class="document-link">Télécharger</a>
+    <!-- Section Accueil -->
+    <section class="hero-section" id="accueil">
+        <div class="hero-profile">
+            <img src="photo-profil.jpg" alt="Corentin FRIEDMANN" class="profile-photo">
+            <h2>Corentin FRIEDMANN</h2>
+            <div class="hero-desc">
+                Bienvenue sur mon e-portfolio interactif : <b>projets, compétences, preuves & gadgets !</b>
+            </div>
+            <div class="social-links">
+                <a class="social-btn" href="mailto:tonmail@uha.fr"><i class="fa fa-envelope"></i></a>
+                <a class="social-btn" href="https://linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a class="social-btn" href="https://github.com/Tintinlebgdu67" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="preuve">
-        <div class="preuve-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <p>Attestation de formation réseaux</p>
-          <a href="#" class="document-link">Voir le document</a>
+    <!-- Présentation rapide -->
+    <section class="section-infos container">
+        <div class="infos-bloc">
+            <div class="infos-txt">
+                <h3>Qui suis-je ?</h3>
+                <p>Étudiant BUT Réseaux & Télécoms, passionné par les technologies, les réseaux, l’IT et la cybersécurité.<br>
+                Motivé pour devenir un acteur clé du numérique et des télécoms de demain !</p>
+                <p>
+                    <b>Mail :</b> tonmail@uha.fr<br>
+                    <b>Tél :</b> 06 XX XX XX XX
+                </p>
+            </div>
+            <div class="infos-formations">
+                <span class="formation-badge">BUT Réseaux & Télécommunications</span>
+                <div class="formation-desc">Université de Haute-Alsace<br>Parcours S1 & S2</div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- GRILLE DE COMPÉTENCES -->
-  <div class="container" id="grille">
-    <h2>Grille de compétences – BUT Réseaux & Télécommunications</h2>
+    <!-- Cloud AC -->
+    <section class="container" id="ac-cloud-section">
+        <h2>Visualiser par compétences (AC)</h2>
+        <div id="ac-cloud" style="margin:20px 0 34px 0; display: flex; flex-wrap: wrap; gap: 9px;"></div>
+    </section>
 
-    <div class="bloc">
-      <h3>Administrer</h3>
+    <!-- PROJETS & SAE -->
+    <section class="container" id="projets">
+        <h2>Mes Projets & SAÉ</h2>
+        <div id="projets-list"></div>
+    </section>
 
-      <div class="ac">
-        <h4>AC11.01 – Lois fondamentales de l’électricité</h4>
-        <ul>
-          <li>📘 Activités : SAE1.01, TP électricité</li>
-          <li>📎 Ressources : <a href="#">Rapport TP</a></li>
-          <li>📝 Remarque : Bases acquises, à renforcer avec des cas concrets</li>
-        </ul>
-      </div>
+    <!-- GRILLE COMPÉTENCES AC × SAE -->
+    <section class="container" id="grille">
+        <h2>Grille de compétences : correspondance AC × SAE</h2>
+        <div id="grille-table"></div>
+        <button id="export-pdf" class="btn"><i class="fa fa-file-pdf"></i> Exporter PDF</button>
+    </section>
 
-      <div class="ac">
-        <h4>AC11.03 – Configuration de réseau local</h4>
-        <ul>
-          <li>📘 Activités : Packet Tracer, SAE1.02</li>
-          <li>📎 Ressources : <a href="#">Vidéo démo</a></li>
-          <li>📝 Remarque : VLAN et routage maîtrisés</li>
-        </ul>
-      </div>
-    </div>
+    <!-- Footer -->
+    <footer>
+        © 2025 Portfolio BUT Réseaux & Télécoms – Corentin FRIEDMANN
+    </footer>
 
-    <div class="bloc">
-      <h3>Connecter</h3>
-
-      <div class="ac">
-        <h4>AC12.04 – ToIP (Téléphonie IP)</h4>
-        <ul>
-          <li>📘 Activités : SAE1.03, TP téléphone IP</li>
-          <li>📎 Ressources : <a href="#">Config SIP</a></li>
-          <li>📝 Remarque : Bonne compréhension du protocole</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="bloc">
-      <h3>Programmer</h3>
-
-      <div class="ac">
-        <h4>AC13.02 – Corriger un programme</h4>
-        <ul>
-          <li>📘 Activités : TP Python, SAE1.05</li>
-          <li>📎 Ressources : <a href="#">Script analyse</a></li>
-          <li>📝 Remarque : logique propre, à commenter davantage</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <p>© 2025 Portfolio BUT Réseaux & Télécom - Corentin FRIEDMANN</p>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+    <!-- JS principal -->
+    <script src="main.js"></script>
 </body>
 </html>

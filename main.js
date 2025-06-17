@@ -1,448 +1,194 @@
-fetch('data.json')
-// Chargement des données JSON
-fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    // Animation 1: Effet parallaxe
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientX / window.innerHeight;
-      document.querySelector('header').style.transform = 
-        `translate(${x * 20}px, ${y * 20}px)`;
-    });
+// === LISTE DES 18 AC OFFICIELLES ===
+const allACs = [
+    "AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05",
+    "AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05",
+    "AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06",
+    "AC14.01", "AC14.02" // Mets ici toutes tes AC, adapte si besoin
+];
 
-    // Animation 2: Fade-in progressif
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeIn 1s forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
+// === DESCRIPTIONS COURTES (exemple, à personnaliser) ===
+const acDescriptions = {
+    "AC11.01": "Lois fondamentales de l’électricité pour le matériel.",
+    "AC11.02": "Architecture & bases des systèmes numériques.",
+    "AC11.03": "Configurer et exploiter un réseau local.",
+    "AC11.04": "Installer, configurer et sécuriser un système d’exploitation.",
+    "AC11.05": "Cybersécurité et hygiène informatique.",
+    "AC12.01": "Architectures réseau, protocoles et adressage.",
+    "AC12.02": "Mesurer et caractériser les signaux.",
+    "AC12.03": "Découvrir un dispositif de transmission.",
+    "AC12.04": "VoIP et intégration de solutions réseaux.",
+    "AC12.05": "Communication écrite et orale, présentation.",
+    "AC13.01": "Sensibilisation sécurité info & orga.",
+    "AC13.02": "Développement et traitement des données.",
+    "AC13.03": "Travailler en équipe, projet intégratif.",
+    "AC13.04": "Documenter, restituer, présentation.",
+    "AC13.05": "Gestion de données adaptée à l’outil.",
+    "AC13.06": "S’intégrer à un environnement collaboratif.",
+    "AC14.01": "AC optionnelle 1.",
+    "AC14.02": "AC optionnelle 2."
+};
 
-    document.querySelectorAll('.competence-card').forEach(card => {
-      observer.observe(card);
-    });
-
-    // Animation 3: Effet "flip" sur les cartes
-    document.querySelectorAll('.competence-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'perspective(1000px) rotateY(180deg)';
-        setTimeout(() => {
-          card.style.transform = 'perspective(1000px) rotateY(0deg)';
-        }, 1000);
-      });
-    });
-
-    // Animation 4: Vague de couleur
-    function colorWave() {
-      const colors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12'];
-      let i = 0;
-      setInterval(() => {
-        document.documentElement.style.setProperty('--primary', colors[i]);
-        i = (i + 1) % colors.length;
-      }, 3000);
+// === LISTE DE TES SAÉ/PROJETS (adapte si tu veux en rajouter/supprimer) ===
+const projets = [
+    {
+        titre: "SAE1.02 – S’initier aux Réseaux Informatiques",
+        ac: ["AC11.02", "AC12.01"],
+        description: "Premiers pas dans les réseaux informatiques, configuration, adressage, manipulation du matériel.",
+        github: "https://github.com/TonUtilisateur/sae102-reseaux"
+    },
+    {
+        titre: "SAE1.03 – Découvrir un dispositif de transmission",
+        ac: ["AC12.03"],
+        description: "Découverte, analyse et expérimentation autour des dispositifs de transmission (ex : Wi-Fi, Ethernet…).",
+        github: "https://github.com/TonUtilisateur/sae103-dispositif"
+    },
+    {
+        titre: "SAE1.04 – Se présenter sur Internet",
+        ac: ["AC12.05"],
+        description: "Création d’un portfolio ou page web pour se présenter et valoriser ses compétences.",
+        github: "https://github.com/TonUtilisateur/sae104-presentation"
+    },
+    {
+        titre: "SAE1.05 – Traiter les données",
+        ac: ["AC13.02"],
+        description: "Mise en œuvre d’outils ou de scripts pour manipuler et traiter des données informatiques.",
+        github: "https://github.com/TonUtilisateur/sae105-donnees"
+    },
+    {
+        titre: "SAE11 – Hygiène Informatique",
+        ac: ["AC11.05", "AC13.01"],
+        description: "Sensibilisation et application des bonnes pratiques en cybersécurité et hygiène informatique.",
+        github: "https://github.com/TonUtilisateur/sae11-hygiene"
+    },
+    {
+        titre: "SAE2.01 – Construire un réseau",
+        ac: ["AC11.03", "AC13.04"],
+        description: "Réalisation d’un projet de conception et mise en place d’un réseau informatique complet.",
+        github: "https://github.com/TonUtilisateur/sae201-construire-reseau"
+    },
+    {
+        titre: "SAE2.02 – Mesurer et caractériser un signal",
+        ac: ["AC12.02"],
+        description: "Analyse de signaux, manipulation d’oscilloscope, compréhension des caractéristiques des transmissions.",
+        github: "https://github.com/TonUtilisateur/sae202-signal"
+    },
+    {
+        titre: "SAE2.04 – Projet intégratif",
+        ac: ["AC12.04", "AC13.03"],
+        description: "Projet global permettant de mobiliser l’ensemble des compétences du semestre : réseau, signal, dev, cybersécurité…",
+        github: "https://github.com/TonUtilisateur/sae204-projet-integratif"
     }
-    colorWave();
+];
 
-    // Animation 5: Particules interactives
-    class Particle {
-      constructor() {
-        this.x = Math.random() * window.innerWidth;
-        this.y = Math.random() * window.innerHeight;
-        this.size = Math.random() * 5 + 1;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.1;
-      }
-      draw() {
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = `rgba(52, 152, 219, ${this.size/5})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      const canvas = document.createElement('canvas');
-      canvas.id = 'particle-canvas';
-      canvas.style.position = 'fixed';
-      canvas.style.top = '0';
-      canvas.style.left = '0';
-      canvas.style.zIndex = '-1';
-      document.body.appendChild(canvas);
-      
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      const particles = Array(50).fill().map(() => new Particle());
-      
-      function animate() {
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          p.update();
-          p.draw();
-          if (p.x < 0 || p.x > canvas.width || 
-              p.y < 0 || p.y > canvas.height || p.size <= 0.2) {
-            const index = particles.indexOf(p);
-            particles[index] = new Particle();
-          }
-        });
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-    initParticles();
-  })
-  .catch(error => console.error('Erreur:', error));
-
-// Animation 6: Texte machine à écrire
-class TypeWriter {
-  constructor(txtElement, words, wait = 3000) {
-    this.txtElement = txtElement;
-    this.words = words;
-    this.txt = '';
-    this.wordIndex = 0;
-    this.wait = parseInt(wait, 10);
-    this.type();
-    this.isDeleting = false;
-  }
-
-  type() {
-    const current = this.wordIndex % this.words.length;
-    const fullTxt = this.words[current];
-
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
-
-    let typeSpeed = 100;
-    if (this.isDeleting) typeSpeed /= 2;
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      typeSpeed = this.wait;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.wordIndex++;
-      typeSpeed = 500;
-    }
-
-    setTimeout(() => this.type(), typeSpeed);
-  }
+// === FONCTION POUR LES BADGES AC CLIQUABLES (pour filtrer) ===
+function badgeAC(ac) {
+    return `<span class="ac-badge" title="${acDescriptions[ac] || ac}" onclick="filterByAC('${ac}')">${ac}</span>`;
 }
 
+// === INJECTION DU CLOUD DE BADGES AC (filtre dynamique) ===
+function renderACCloud() {
+    document.getElementById('ac-cloud').innerHTML = allACs.map(ac => badgeAC(ac)).join('');
+}
+
+// === AFFICHAGE DES PROJETS/SAÉ AVEC BADGES AC ===
+function renderProjets(filteredAC = null) {
+    const projDiv = document.getElementById('projets-list');
+    let filtered = projets;
+    if (filteredAC) filtered = projets.filter(p => p.ac && p.ac.includes(filteredAC));
+    if (filtered.length === 0) {
+        projDiv.innerHTML = `<div style="text-align:center;margin:44px 0;font-size:1.25em;">Aucun projet ne valide cette compétence pour l’instant.</div>`;
+        return;
+    }
+    projDiv.innerHTML = filtered.map(p => `
+        <div class="projet-card">
+            <div class="projet-info">
+                <b>${p.titre}</b>
+                <div>${p.description}</div>
+                <div class="projet-tags">
+                    ${p.ac.map(a => badgeAC(a)).join('')}
+                </div>
+                <a href="${p.github}" target="_blank" class="btn" style="margin-top:14px;">
+                    <i class="fa-brands fa-github"></i> Preuve GitHub
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+// === FILTRE SUR LES BADGES AC ===
+function filterByAC(ac) {
+    renderProjets(ac);
+    window.scrollTo({top: document.getElementById('projets').offsetTop - 40, behavior: 'smooth'});
+}
+
+// === GRILLE AC × SAE INTERACTIVE ===
+function renderGrille() {
+    // Récupère toutes les AC utilisées au moins une fois (ou affiche tout si tu veux la grille complète)
+    // Pour toutes les AC, même si non couvertes :
+    let html = `<table class="grille-ac-sae"><thead><tr><th>AC \\ SAE</th>`;
+    projets.forEach(p => html += `<th>${p.titre}</th>`);
+    html += `</tr></thead><tbody>`;
+    allACs.forEach(ac => {
+        html += `<tr><td><b title="${acDescriptions[ac] || ac}">${ac}</b></td>`;
+        projets.forEach(p => {
+            html += `<td style="text-align:center;">${
+                (p.ac.includes(ac))
+                ? `<span class="grille-dot" title="Preuve via ${p.titre}" onclick="window.open('${p.github}','_blank')"></span>`
+                : ''
+            }</td>`;
+        });
+        html += `</tr>`;
+    });
+    html += `</tbody></table>`;
+    document.getElementById('grille-table').innerHTML = html;
+}
+
+// === GADGETS ===
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+}
 document.addEventListener('DOMContentLoaded', () => {
-  const txtElement = document.querySelector('.typing');
-  const words = JSON.parse(txtElement.getAttribute('data-words'));
-  const wait = txtElement.getAttribute('data-wait');
-  new TypeWriter(txtElement, words, wait);
+    document.getElementById('export-pdf').onclick = () => { window.print(); };
 });
 
-// Animation 7: Scroll progressif
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    window.scrollTo({
-      top: target.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Animation 8: Effet "sticky" sur la navigation
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  nav.classList.toggle('scrolled', window.scrollY > 100);
-});
-
-// Animation 9: Chargement dynamique du contenu
-function loadCompetences() {
-  fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('competences-container');
-      data.etudiant.competences.forEach(competence => {
-        const card = document.createElement('div');
-        card.className = 'competence-card';
-        card.innerHTML = `
-          <h3>${competence.titre}</h3>
-          <p>${competence.description}</p>
-          <div class="preuves"></div>
-        `;
-        container.appendChild(card);
-      });
-    });
-}
-
-// Animation 10: Effet "confetti" sur validation
-function triggerConfetti() {
-  const canvas = document.createElement('canvas');
-  canvas.style.position = 'fixed';
-  canvas.style.top = '0';
-  canvas.style.left = '0';
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.style.zIndex = '9999';
-  canvas.style.pointerEvents = 'none';
-  document.body.appendChild(canvas);
-
-  const confetti = new ConfettiGenerator({
-    target: canvas,
-    max: 150,
-    size: 1.5,
-    animate: true,
-    props: ['circle', 'square', 'triangle', 'line']
-  });
-  confetti.render();
-  setTimeout(() => {
-    canvas.remove();
-  }, 5000);
-}
-
-document.querySelectorAll('.validate-btn').forEach(btn => {
-  btn.addEventListener('click', triggerConfetti);
-}); 
-// 1. Initialisation de la scène Three.js
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('webgl-container').appendChild(renderer.domElement);
-
-// 2. Effet de particules 3D
-const particleGeometry = new THREE.BufferGeometry();
-const particleCount = 5000;
-const posArray = new Float32Array(particleCount * 3);
-
-for(let i = 0; i < particleCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 10;
-}
-
-particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const particleMaterial = new THREE.PointsMaterial({
-    size: 0.005,
-    color: 0x00ffff,
-    transparent: true,
-    opacity: 0.8,
-    blending: THREE.AdditiveBlending
-});
-const particlesMesh = new THREE.Points(particleGeometry, particleMaterial);
-scene.add(particlesMesh);
-
-camera.position.z = 2;
-
-// 3. Animation de la caméra
-document.addEventListener('mousemove', (e) => {
-    camera.position.x = (e.clientX / window.innerWidth - 0.5) * 2;
-    camera.position.y = -(e.clientY / window.innerHeight - 0.5) * 2;
-    camera.lookAt(scene.position);
-});
-
-// 4. Effet Matrix (chute de caractères)
-class MatrixColumn {
-    constructor(x, fontSize, canvasHeight) {
-        this.characters = "01アイウエオカキクケコサシスセソ";
-        this.x = x;
-        this.y = 0;
-        this.fontSize = fontSize;
-        this.canvasHeight = canvasHeight;
-        this.speed = Math.random() * 5 + 1;
-        this.column = [];
-        this.initColumn();
-    }
-
-    initColumn() {
-        const length = Math.floor(Math.random() * 10) + 5;
-        for(let i = 0; i < length; i++) {
-            this.column.push({
-                char: this.characters[Math.floor(Math.random() * this.characters.length)],
-                y: i * this.fontSize
-            });
-        }
-    }
-
-    draw(ctx) {
-        ctx.fillStyle = "rgba(0, 255, 150, 0.8)";
-        ctx.font = `${this.fontSize}px monospace`;
-        
-        this.column.forEach((charObj, index) => {
-            const brightness = index === 0 ? 1 : index / this.column.length;
-            ctx.fillStyle = `rgba(0, ${255 * brightness}, ${150 * brightness}, ${brightness})`;
-            ctx.fillText(charObj.char, this.x, charObj.y);
-            
-            if(index === 0) {
-                charObj.y += this.speed;
-                if(charObj.y > this.canvasHeight && Math.random() > 0.95) {
-                    charObj.y = 0;
-                }
-            } else {
-                const prevChar = this.column[index - 1];
-                charObj.y = prevChar.y - this.fontSize;
-            }
-        });
-    }
-}
-
-// 5. Initialisation de l'effet Matrix
-function initMatrixEffect() {
+// FOND ANIMÉ
+(function particlesBG() {
     const canvas = document.createElement('canvas');
-    const container = document.querySelector('.digital-grid');
-    container.appendChild(canvas);
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.zIndex = '-1';
-    canvas.width = container.offsetWidth;
-    canvas.height = container.offsetHeight;
-    
+    document.getElementById('webgl-container').appendChild(canvas);
     const ctx = canvas.getContext('2d');
-    const fontSize = 20;
-    const columns = [];
-    
-    for(let i = 0; i < canvas.width / fontSize; i++) {
-        columns.push(new MatrixColumn(i * fontSize, fontSize, canvas.height));
-    }
-    
-    function animate() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        columns.forEach(col => col.draw(ctx));
-        requestAnimationFrame(animate);
-    }
-    animate();
-}
-
-// 6. Effet Hologramme
-function initHologramEffect() {
-    const cards = document.querySelectorAll('.hologram-card');
-    cards.forEach(card => {
-        const line = card.querySelector('.hologram-line');
-        let isAnimating = false;
-        
-        card.addEventListener('mouseenter', () => {
-            if(isAnimating) return;
-            isAnimating = true;
-            
-            gsap.to(line, {
-                scaleY: 1,
-                opacity: 1,
-                duration: 0.3,
-                ease: "power2.out",
-                onComplete: () => {
-                    gsap.to(line, {
-                        scaleY: 0,
-                        opacity: 0,
-                        duration: 0.3,
-                        delay: 0.5,
-                        ease: "power2.in",
-                        onComplete: () => {
-                            isAnimating = false;
-                        }
-                    });
-                }
-            });
+    const dots = Array.from({length: 105}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.7,
+        dx: Math.random()*0.3 + 0.1,
+        dy: Math.random()*0.3 + 0.1,
+        color: `rgba(${Math.floor(Math.random()*100+155)},${Math.floor(Math.random()*200+55)},252,0.18)`
+    }));
+    function draw() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        dots.forEach(dot=>{
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI*2);
+            ctx.fillStyle = dot.color;
+            ctx.fill();
+            dot.x += dot.dx * (Math.random() > 0.5 ? 1 : -1);
+            dot.y += dot.dy * (Math.random() > 0.5 ? 1 : -1);
+            if(dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+            if(dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
         });
-        
-        // Animation aléatoire
-        setInterval(() => {
-            if(!isAnimating && Math.random() > 0.7) {
-                card.dispatchEvent(new Event('mouseenter'));
-            }
-        }, 3000);
+        requestAnimationFrame(draw);
+    }
+    draw();
+    window.addEventListener('resize', ()=>{
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     });
-}
+})();
 
-// 7. Terminal interactif
-class Terminal {
-    constructor(element) {
-        this.element = element;
-        this.lines = element.querySelectorAll('.terminal-line');
-        this.currentLine = 0;
-        this.init();
-    }
-    
-    init() {
-        this.typeLine(this.lines[this.currentLine]);
-    }
-    
-    typeLine(line) {
-        const text = line.getAttribute('data-text');
-        let displayText = '';
-        let i = 0;
-        
-        line.textContent = '> ';
-        const typing = setInterval(() => {
-            if(i < text.length) {
-                displayText += text[i];
-                line.textContent = '> ' + displayText;
-                i++;
-            } else {
-                clearInterval(typing);
-                setTimeout(() => {
-                    this.nextLine();
-                }, 2000);
-            }
-        }, 50 + Math.random() * 50);
-    }
-    
-    nextLine() {
-        this.currentLine = (this.currentLine + 1) % this.lines.length;
-        this.typeLine(this.lines[this.currentLine]);
-    }
-}
-
-// 8. Initialisation des effets au chargement
-window.addEventListener('load', () => {
-    // Three.js animation
-    function animate() {
-        requestAnimationFrame(animate);
-        particlesMesh.rotation.x += 0.0005;
-        particlesMesh.rotation.y += 0.001;
-        renderer.render(scene, camera);
-    }
-    animate();
-    
-    // Initialisation des autres effets
-    initMatrixEffect();
-    initHologramEffect();
-    new Terminal(document.querySelector('.terminal'));
-    
-    // GSAP Scroll Animations
-    gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.utils.toArray('.competence-card').forEach(card => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top 80%",
-                toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power3.out"
-        });
-    });
-    
-    // Effet de distortion au scroll
-    gsap.to("#webgl-container", {
-        scrollTrigger: {
-            scrub: true
-        },
-        scale: 1.2,
-        opacity: 0.5
-    });
-});
+// === INITIALISATION ===
+window.onload = function () {
+    renderACCloud();
+    renderProjets();
+    renderGrille();
+};
