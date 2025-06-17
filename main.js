@@ -12,6 +12,226 @@ const acDomain = {
 };
 const allACs = [...acDomain.admin, ...acDomain.connect, ...acDomain.prog];
 
+const acTextesLongs = {
+  "AC11.01": `
+    <p>
+      <strong>Maîtriser les lois fondamentales de l’électricité pour intervenir sur des équipements de réseau</strong><br>
+      Cette compétence est essentielle car l’électricité est à la base du fonctionnement de tous les équipements numériques et réseaux. Elle permet de comprendre la sécurité, la maintenance, l’alimentation, et le diagnostic d’incidents sur le matériel. La maîtrise des bases électriques garantit d’éviter les erreurs de branchement et d’intervenir sereinement lors d’installations réseau ou de réparations.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Ateliers de travaux pratiques</b> :<br>
+        Lors des séances en laboratoire, j’ai appris à manipuler des appareils de mesure, à lire des schémas électriques et à appliquer les règles de sécurité. J’ai compris les principes de courant, tension, résistance, ainsi que l’importance d’un câblage soigné. Ces notions sont devenues naturelles lors de mes interventions sur du matériel réseau.
+      </li>
+    </ul>
+  `,
+  "AC11.02": `
+    <p>
+      <strong>Comprendre l’architecture et les fondements des systèmes numériques, le codage et l’Internet</strong><br>
+      Cette compétence est indispensable pour saisir comment fonctionnent les ordinateurs, les réseaux et les applications web. Elle englobe le binaire, le codage de l’information, les protocoles Internet (TCP/IP), la logique matérielle, et l’organisation des systèmes numériques. Cela permet de mieux diagnostiquer, configurer et optimiser un environnement informatique.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE1.02 – S’initier aux Réseaux Informatiques</b><br>
+        Grâce à cette SAE, j’ai appris à configurer un réseau local et à comprendre les différentes couches du modèle OSI. J’ai utilisé EVE_NG pour simuler des architectures et expérimenter les bases du routage et du commutateur. Cela m’a permis d’ancrer les connaissances vues en cours dans des situations pratiques.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/eve_ng" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC11.03": `
+    <p>
+      <strong>Configurer les fonctions de base du réseau local</strong><br>
+      Savoir configurer un réseau local, c’est garantir la bonne communication entre les machines. Cela inclut l’attribution d’adresses IP, la configuration des switchs et routeurs, le paramétrage du DHCP, et la vérification des connexions physiques et logiques. Cette compétence est au cœur du métier d’administrateur réseau.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE2.01 – Conception d'un réseau</b><br>
+        Durant ce projet, j’ai mis en place un réseau local complet pour une entreprise fictive : planification d’adressage IP, configuration des équipements et tests de connectivité. J’ai aussi produit de la documentation technique pour garantir la pérennité de l’infrastructure.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/GNS3" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC11.04": `
+    <p>
+      <strong>Maîtriser les systèmes d’exploitation pour administrer un réseau</strong><br>
+      Administrer un réseau nécessite une parfaite connaissance des systèmes d’exploitation (Windows, Linux). Il faut savoir installer, configurer, sécuriser les postes et les serveurs, gérer les utilisateurs et les droits, et automatiser certaines tâches pour gagner du temps et fiabiliser l’exploitation.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Projets d'installation de postes clients</b><br>
+        J’ai installé des OS sur plusieurs machines, paramétré des scripts de connexion, configuré des partages réseau et géré les droits d’accès. Cela m’a permis de mieux comprendre l’interaction entre système et réseau.
+      </li>
+    </ul>
+  `,
+  "AC11.05": `
+    <p>
+      <strong>Identifier les dysfonctionnements du réseau local et savoir les signaler</strong><br>
+      Cette compétence permet de diagnostiquer rapidement les incidents réseau : coupure de service, problème d’accès, perte de connectivité, etc. Elle implique aussi de savoir rédiger un rapport clair et précis pour les équipes techniques ou le support.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE1.02 – S’initier aux Réseaux Informatiques</b><br>
+        J’ai dû analyser et corriger différents scénarios de panne, comme des conflits d’adressage IP ou des erreurs de câblage. J’ai rédigé des comptes-rendus structurés afin de décrire chaque problème et sa résolution, ce qui a renforcé ma capacité à communiquer efficacement.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/eve_ng" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC11.06": `
+    <p>
+      <strong>Installer un poste client, expliquer la procédure mise en place</strong><br>
+      Installer un poste client, c’est garantir qu’un nouvel utilisateur pourra travailler sans souci : installation du système, des logiciels, des accès réseau, et accompagnement pour l’utilisation. Expliquer la démarche montre la maîtrise et l’autonomie sur le poste.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Projets pratiques – Installation de postes</b><br>
+        J’ai suivi une méthodologie stricte pour préparer, installer et configurer des postes utilisateurs. J’ai documenté chaque étape pour pouvoir transmettre le savoir-faire à un collègue ou à un nouvel arrivant.
+      </li>
+    </ul>
+  `,
+  "AC12.01": `
+    <p>
+      <strong>Mesurer, analyser et commenter les signaux</strong><br>
+      Analyser les signaux, c’est comprendre comment l’information circule dans un réseau : mesure de l’atténuation, du bruit, analyse des oscillogrammes, etc. Cette compétence permet de garantir la qualité des communications numériques.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE1.03 – Découvrir un dispositif de transmission</b><br>
+        
+        <br>
+        <a href="https://github.com/CorentinFriedmann/wifi" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC12.02": `
+    <p>
+      <strong>Caractériser des systèmes de transmission</strong><br>
+      Cette compétence vise à comparer différents supports de transmission : cuivre, fibre, Wi-Fi, etc. Elle permet d’adapter le choix du support au besoin réel et de comprendre les limites de chaque technologie.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Travaux pratiques en laboratoire</b><br>
+        J’ai testé différents supports et réalisé des mesures pour déterminer leurs propriétés (débit, portée, atténuation). J’ai ensuite rédigé des rapports comparatifs pour présenter les atouts et les faiblesses de chaque solution.
+      </li>
+    </ul>
+  `,
+  "AC12.03": `
+    <p>
+      <strong>Déployer des supports de transmission</strong><br>
+      Savoir déployer des supports (câbles, fibre optique, liaisons sans fil) est un prérequis pour toute installation réseau. Cela implique aussi la préparation du matériel, le respect des normes, et la réalisation de tests de validation.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE1.03 – Dispositif de Transmission</b><br>
+        J’ai participé à l’installation de câblage, à la mise en œuvre de la fibre optique et à la validation des connexions par des tests. Ce travail de terrain m’a appris la rigueur et l’importance de chaque étape du déploiement.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/wifi" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC12.04": `
+    <p>
+      <strong>Connecter les systèmes de ToIP</strong><br>
+      La ToIP (Téléphonie sur IP) est aujourd’hui incontournable : comprendre son fonctionnement, configurer les équipements, assurer la qualité de service, voilà les enjeux de cette compétence.
+    </p>
+    
+  `,
+  "AC12.05": `
+    <p>
+      <strong>Communiquer avec un tiers, adapter son discours</strong><br>
+      Il est crucial de savoir expliquer un problème technique ou une solution à un collègue, un client, ou un supérieur hiérarchique. Savoir vulgariser, s’adapter à l’interlocuteur, c’est aussi savoir écouter, reformuler, et transmettre clairement l’information.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE1.04 – Créer son identité numérique</b><br>
+        J’ai conçu une page web pour présenter mon parcours, mes compétences et mes expériences. Ce travail m’a appris à organiser mes idées, à choisir un vocabulaire accessible, et à penser à l’utilisateur final dans ma communication écrite.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/se_presenter" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC13.01": `
+    <p>
+      <strong>Utiliser un système informatique et ses outils</strong><br>
+      Savoir utiliser efficacement un ordinateur, ses logiciels, et ses outils de travail collaboratif est indispensable dans tous les métiers de l’informatique. Cela englobe l’utilisation d’un système d’exploitation, d’un éditeur de texte, des outils de sauvegarde, etc.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Utilisation quotidienne en cours et en projet</b><br>
+        J’ai renforcé ma maîtrise des outils bureautiques, des éditeurs de code, des gestionnaires de versions comme Git, et j’ai su les adapter à chaque contexte professionnel rencontré.
+      </li>
+    </ul>
+  `,
+  "AC13.02": `
+    <p>
+      <strong>Lire, exécuter, corriger et modifier un programme</strong><br>
+      Cette compétence est le socle du métier de développeur. Elle permet de comprendre un code existant, d’identifier des bugs, d’apporter des améliorations ou des corrections, et de le tester dans des conditions variées.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Projets de programmation en TP</b><br>
+        J’ai été confronté à des codes incomplets ou contenant des erreurs. J’ai su les relire, comprendre la logique, corriger les fautes et optimiser certains traitements pour les rendre plus performants ou plus robustes.
+      </li>
+    </ul>
+  `,
+  "AC13.03": `
+    <p>
+      <strong>Traduire un algorithme dans un langage</strong><br>
+      Passer de l’algorithme (pseudo-code, logique) à la programmation réelle est une compétence clé pour tous les informaticiens. Elle demande rigueur, adaptation et créativité.
+    </p>
+  
+  `,
+  "AC13.04": `
+    <p>
+      <strong>Connaître l’architecture et les technologies d’un site Web</strong><br>
+      Le développement web nécessite de connaître les langages, les protocoles, la structure des sites, et les technologies associées (HTML, CSS, JS, hébergement, etc.).
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>SAE2.01 – Conception d'un réseau</b><br>
+        J’ai documenté et présenté l’architecture réseau en m’inspirant des méthodes web : création de schémas, utilisation de technologies de présentation, sensibilisation aux enjeux de l’accessibilité.
+        <br>
+        <a href="https://github.com/CorentinFriedmann/GNS3" target="_blank">Voir la preuve Github</a>
+      </li>
+    </ul>
+  `,
+  "AC13.05": `
+    <p>
+      <strong>Choisir les mécanismes de gestion de données</strong><br>
+      Les données sont au cœur de l’informatique moderne. Il faut savoir choisir la bonne méthode de stockage, de sauvegarde et d’accès, en fonction du contexte et des contraintes.
+    </p>
+    <h4>Mon expérience :</h4>
+    <ul>
+      <li>
+        <b>Projets de bases de données</b><br>
+        J’ai travaillé sur la création de schémas de bases de données, sur le choix de solutions de gestion (SQL, fichiers plats), et sur la mise en œuvre de stratégies de sauvegarde/restauration.
+      </li>
+    </ul>
+  `,
+  "AC13.06": `
+    <p>
+      <strong>S’intégrer dans un environnement collaboratif</strong><br>
+      Le travail en équipe est une réalité du monde professionnel. Savoir utiliser les outils collaboratifs, partager des documents, gérer un projet avec ses collègues et communiquer efficacement est indispensable.
+    </p>
+   
+  `
+};
+
 const acDescriptions = {
   "AC11.01": "Maîtriser les lois fondamentales de l’électricité pour intervenir sur des équipements de réseau",
   "AC11.02": "Comprendre l’architecture et les fondements des systèmes numériques, le codage et l’Internet",
@@ -64,7 +284,7 @@ const projets = [
     outils: "HTML, CSS, éditeur VS Code",
     difficulte: "Responsive design et choix graphiques accessibles.",
     images: ["img/sae104-1.png"],
-    github: "https://github.com/TonUtilisateur/sae104-presentation"
+    github: "https://github.com/CorentinFriedmann/se_presenter"
   },
   {
     titre: "SAE2.01 – Conception d'un réseau",
@@ -75,19 +295,9 @@ const projets = [
     outils: "Packet Tracer, GNS3, Word, PowerPoint",
     difficulte: "Gestion du temps, synthèse des résultats.",
     images: ["img/sae201-1.jpg"],
-    github: "https://github.com/TonUtilisateur/sae201-reseau"
+    github: "https://github.com/CorentinFriedmann/GNS3"
   },
-  {
-    titre: "SAE2.04 – Projet intégratif",
-    ac: ["AC12.04", "AC13.03"],
-    description: "Projet global mobilisant les compétences du semestre (réseau, signal, dev, cybersécurité…).",
-    reflexion: "Coordination de groupe et gestion de projet m'ont permis de mettre en œuvre de nombreuses compétences transverses. Travail en équipe et reporting régulier.",
-    role: "Coordinateur d’équipe, gestion projet",
-    outils: "Git, Trello, GNS3, Packet Tracer",
-    difficulte: "Répartition des tâches, respect des délais.",
-    images: [],
-    github: "https://github.com/TonUtilisateur/sae204-projet-integratif"
-  }
+
 ];
 
 // ------------------------------
@@ -95,8 +305,9 @@ const projets = [
 // ------------------------------
 function badgeAC(ac) {
   const dom = Object.keys(acDomain).find(d => acDomain[d].includes(ac));
-  return `<span class="ac-badge ${dom}" title="${acDescriptions[ac] || ac}" onclick="filterByAC('${ac}')">${ac}</span>`;
+  return `<span class="ac-badge ${dom}" title="${acDescriptions[ac] || ac}" onclick="showACDetail('${ac}')">${ac}</span>`;
 }
+
 
 function renderACCloud(list = allACs) {
   document.getElementById('ac-cloud').innerHTML = list.map(ac => badgeAC(ac)).join('');
@@ -241,10 +452,47 @@ function renderChart() {
 // ------------------------------
 // INTERACTIONS ET INITIALISATION
 // ------------------------------
-function filterByAC(ac) {
-  renderProjets(ac);
-  window.scrollTo({top: document.getElementById('projets').offsetTop - 40, behavior: 'smooth'});
+function showACDetail(ac) {
+  const dom = Object.keys(acDomain).find(d => acDomain[d].includes(ac));
+  const projetsForAC = projets.filter(p => p.ac.includes(ac));
+  let html = `
+    <div class="ac-detail-head">
+      <span class="ac-badge ${dom}">${ac}</span>
+      <span class="ac-name">${acDescriptions[ac] || ''}</span>
+      <button onclick="closeACDetail()" class="close-btn" title="Fermer">&times;</button>
+    </div>
+    <div class="ac-detail-body">
+      ${acTextesLongs[ac] || `
+        <h4>Explication</h4>
+        <div>${acDescriptions[ac] || ''}</div>
+        <h4>SAÉ / Projets associés</h4>
+        <ul>
+          ${
+            projetsForAC.length ?
+            projetsForAC.map(p =>
+              `<li>
+                <b>${p.titre}</b> :<br>
+                <span>${getAcJustification(p, ac)}</span><br>
+                <a href="${p.github}" target="_blank">Voir la preuve Github</a>
+              </li>`
+            ).join('')
+            : `<li>Aucun projet associé pour l’instant.</li>`
+          }
+        </ul>
+      `}
+    </div>
+  `;
+  const acDetail = document.getElementById('ac-detail');
+  acDetail.innerHTML = html;
+  acDetail.style.display = 'block';
+  acDetail.scrollIntoView({behavior:"smooth", block:"center"});
 }
+
+
+function closeACDetail() {
+  document.getElementById('ac-detail').style.display = 'none';
+}
+
 
 function toggleTheme() {
   document.body.classList.toggle('dark-theme');
